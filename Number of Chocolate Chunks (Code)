@@ -1,0 +1,27 @@
+def numChocolateChips(matrix):
+
+    m = len(matrix)
+    n = len(matrix[0])
+
+    counter = 0
+
+   
+
+    def chunks(row, col):
+        matrix[row][col] = 0
+
+        for r,c in [(row+1, col), (row-1, col), (row, col+1), (row, col-1)]:
+            if 0<=r and r<m and 0<=c and c<n and matrix[r][c]==1:
+                chunks(r, c)
+
+                
+
+    for row in range(m):
+        for col in range(n):
+            if matrix[row][col] == 1:
+                counter = counter + 1
+                chunks(row, col)
+
+    return counter
+            
+    
