@@ -1,0 +1,16 @@
+def groupAnagrams(strs):
+    tupleGroup = {}
+    for x in strs:
+
+        letterCount = [0]*26
+        for y in x:
+            index = ord(y) - ord('a')
+            letterCount[index] += 1
+        
+        t = tuple(letterCount)
+
+        if t not in tupleGroup:
+            tupleGroup[t] = []
+        tupleGroup[t].append(x)
+
+    return tupleGroup.values()
