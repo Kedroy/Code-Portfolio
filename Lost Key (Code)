@@ -1,0 +1,21 @@
+def timeLost(video):
+    leftmost = None
+
+    def search(i, j):
+        # base case
+        if j == i-1:
+            return
+
+        # recursion
+        mid = (i + j) // 2
+        if video[mid]:
+            search(mid+1, j)
+        else:
+            nonlocal leftmost
+            leftmost = mid
+            search(i, mid-1)
+
+    search(0, len(video)-1) # call function
+    return leftmost
+
+    
